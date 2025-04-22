@@ -1,0 +1,10 @@
+{
+  "name": "nwlog",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
