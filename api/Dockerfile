@@ -1,12 +1,16 @@
-FROM node:16
+FROM node:18
 
 WORKDIR /app
 
-COPY ./app/package*.json ./
+COPY app/package*.json ./
+
+RUN apt-get update && \
+    apt-get install -y libnode108 libpcap-dev build-essential python3  && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN npm install
 
-COPY ./app .
+COPY app ./
 
 EXPOSE 3000
 
