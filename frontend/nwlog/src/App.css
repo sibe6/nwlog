@@ -1,0 +1,76 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.right-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  background-color: #743535;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button img {
+  width: 20px;
+  height: 20px;
+}
+
+.button:hover {
+  background-color: #5a2929;
+}
+
+.dropdown {
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #333333;
+  font-size: 1rem;
+}
+
+.button:hover {
+  background-color: #5a2929;
+}
+
+.equal-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.equal-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #743535;
+  color: white;
+  z-index: 1;
+  border-bottom: 2px solid black;
+}
+
+.container {
+  justify-content: center;
+  margin: 10px auto;
+  background-color: #743535;
+  border: 2px solid rgb(0, 0, 0);
+  width: 1280px;
+  height: 500px;
+  border-radius: 10px;
+  overflow: auto;
+  box-sizing: border-box;
+}
