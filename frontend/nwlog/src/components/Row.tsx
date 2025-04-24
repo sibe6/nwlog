@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './Row.css'
 import { Packet } from '../constants/Types';
 import protocols from '../constants/Protocols';

@@ -3,18 +3,18 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
     volumes:
-      - ./api:/app
+      - ./api/app:/app
     restart: always
 
-  nwlog-http:
+  nwlog-front:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
-    volumes:
-      - ./frontend:/app
+      - "8080:80"
     restart: always

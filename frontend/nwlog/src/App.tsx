@@ -8,7 +8,7 @@ export default function App() {
   const [packets, setPackets] = useState<Packet[]>([]);
   const [devices, setDevices] = useState<NetworkInterface[]>([]);
   const [selectedDevice, setSelectedDevice] = useState<NetworkInterface | null>(null);
-  const apiServer = 'http://api:3000'
+  const apiServer = '/api';
 
   useEffect(() => {
     if (!selectedDevice) {
@@ -35,7 +35,7 @@ export default function App() {
   }, [selectedDevice]);
 
   const getDevices = () => {
-    fetch(`${apiServer}/api/devices`)
+    fetch(`${apiServer}/devices`)
       .then((response) => response.json())
       .then((devices) => {
         setDevices(devices);
@@ -51,7 +51,7 @@ export default function App() {
   const selectDevice = (device: NetworkInterface): void => {
     console.log(`Selected device: ${device.name}`);
 
-    fetch(`${apiServer}/api/select-device`, {
+    fetch(`${apiServer}/select-device`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

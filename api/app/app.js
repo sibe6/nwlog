@@ -2,16 +2,15 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 const port = 3000;
-const { Cap, decoders} = require('cap');
+const { Cap } = require('cap');
 const PacketSniffer = require('./sniffer');
 
 const deviceList = [];
 var selectedDevice = "";
 
-//app.use(cors());
 app.use(express.json());
 
-app.get('/sse', (req, res) => {
+app.get('/api/sse', (req, res) => {
   if (selectedDevice === "") {
     console.log('No selected device!');
     res.status(400).end();
@@ -40,12 +39,14 @@ app.get('/sse', (req, res) => {
 });
 
 app.get('/api/devices', (req, res) => {
+  console.log('Device list requested');
   deviceList.length = 0;
 
   Cap.deviceList().forEach((device) => {
     deviceList.push(device);
   });
   res.json(deviceList);
+  console.log('Device list sent');
 });
 
 app.post('/api/select-device', (req, res) => {
