@@ -11,10 +11,12 @@ export interface Packet {
 }
 
 interface TCPHeader {
-  srcPort: string;
-  dstPort: string;
-  seq: string;
-  ack: string;
+  srcPort: number;
+  dstPort: number;
+  seq: number;
+  ack: number;
+  dataOffset: string;
+  reserved: string;
   flags: string
   window: string;
   checksum: string;

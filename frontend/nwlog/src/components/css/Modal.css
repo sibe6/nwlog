@@ -1,0 +1,98 @@
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #743535;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #242424;
+  color: white;
+  border-radius: 10px;
+  align-items: start;
+  border: 1px solid #000;
+  max-width: 800px;
+  min-width: 10%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.modal-body {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+
+.modal-table {
+  border: none;
+  width: 100%;
+  table-layout: auto;
+  padding: 5px;
+  border-collapse: collapse;
+}
+
+.modal-table td:first-child {
+  white-space: nowrap;
+}
+
+.modal-table td {
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #000;
+  justify-content: start;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.modal-table tr:last-child td {
+  border-bottom: none;
+}
+
+.modal-table tr:last-child:hover {
+  background-color: #242424;
+}
+
+.modal-table tr:hover {
+  background-color: #743535;
+  transition: background-color 0.2s ease;
+}
+
+.modal-header .close {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #743535; 
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-header .close:hover {
+  background-color: #5a2929;
+}

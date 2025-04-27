@@ -1,0 +1,39 @@
+.http-table {
+  border: none;
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+  padding: 5px;
+  border-collapse: collapse;
+  word-wrap: break-word;
+}
+
+.http-table td {
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #000000;
+  padding: 0 !important;
+  word-wrap: break-word;
+}
+
+.http-table td:first-child {
+  vertical-align: top;
+  word-wrap: break-word;
+}
+
+.http-table tr:last-child td {
+  border-bottom: none;
+}
+
+.http-table tr:hover {
+  background-color: none !important;
+  transition: none !important;
+}
+
+.http-table tr:nth-child(even) {
+  background-color: #2b2b2b;
+}
+
+.http-table tr:nth-child(odd) {
+  background-color: #242424;
+}
