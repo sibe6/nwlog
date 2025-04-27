@@ -69,18 +69,37 @@ class PacketSniffer {
 }
 
 function handleTCP(ret, packet, buffer) {
+  const rawTCPHeader = buffer.slice(ret.offset, ret.offset + 20);
+  const ack = rawTCPHeader.readUInt32BE(8);
+  const seq = rawTCPHeader.readUInt32BE(4);
+  const reserved = (rawTCPHeader[12] & 0b11100000) >> 5;
+  const urgentPointer = rawTCPHeader.readUInt16BE(18);
+  const dataOffset = (rawTCPHeader[12] >> 4) * 4;
+  let options = null;
+  if (dataOffset > 20) {
+    options = buffer.slice(ret.offset + 20, ret.offset + dataOffset).toString('hex');
+  }
+  console.log('Raw TCP header:', buffer.slice(ret.offset, ret.offset + 20).toString('hex'));
+
   let datalen = ret.info.totallen - ret.hdrlen;
   console.log('Decoding TCP...');
 
   ret = decoders.TCP(buffer, ret.offset);
   packet.header = {
-    src_port: ret.info.srcport,
-    dst_port: ret.info.dstport,
-    seq: ret.info.seq,
-    ack: ret.info.ack,
-    flags: ret.info.flags,
+    srcPort: ret.info.srcport,
+    dstPort: ret.info.dstport,
+    seq: seq,
+    ack: ack,
+    dataOffset: dataOffset,
+    reserved: reserved,
+    flags: getFlagsString(ret.info.flags),
+    window: ret.info.window,
+    checksum: ret.info.checksum,
+    urgentPointer: urgentPointer,
+    options: options
   };
 
+  console.log("------->", packet.header.seq);
   console.log(' from port: ' + ret.info.srcport + ' to port: ' + ret.info.dstport);
   datalen -= ret.hdrlen;
   const data = buffer.toString('binary', ret.offset, ret.offset + datalen);
@@ -89,6 +108,7 @@ function handleTCP(ret, packet, buffer) {
   return packet;
 }
 
+
 function handleUDP(ret, packet) {
   console.log('Decoding UDP...');
   ret = decoders.UDP(this.buffer, ret.offset);
@@ -96,6 +116,22 @@ function handleUDP(ret, packet) {
   console.log(
     this.buffer.toString('binary', ret.offset, ret.offset + ret.info.length)
   );
+}
+
+function getFlagsString(flags) {
+  const flagNames = [
+    { bit: 0x20, name: 'URG' },
+    { bit: 0x10, name: 'ACK' },
+    { bit: 0x08, name: 'PSH' },
+    { bit: 0x04, name: 'RST' },
+    { bit: 0x02, name: 'SYN' },
+    { bit: 0x01, name: 'FIN' },
+  ];
+
+  return flagNames
+    .filter(flag => flags & flag.bit)
+    .map(flag => flag.name)
+    .join(', ');
 }
 /* var packet = {
   time: "",

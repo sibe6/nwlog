@@ -12,7 +12,25 @@
   margin-bottom: 1rem;
 }
 
-.right-buttons {
+.is-connected {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
   display: flex;
   align-items: center;
 }
@@ -57,10 +75,15 @@
 .equal-table thead th {
   position: sticky;
   top: 0;
+  border: 1px solid #000;
   background-color: #743535;
   color: white;
   z-index: 1;
   border-bottom: 2px solid black;
+}
+
+.shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .container {
@@ -68,9 +91,11 @@
   margin: 10px auto;
   background-color: #743535;
   border: 2px solid rgb(0, 0, 0);
-  width: 1280px;
+  max-width: 100%;
+  min-width: 10%;
   height: 500px;
   border-radius: 10px;
   overflow: auto;
   box-sizing: border-box;
+  overflow: auto;
 }
