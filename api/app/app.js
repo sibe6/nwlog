@@ -49,6 +49,17 @@ app.get('/api/devices', (req, res) => {
   console.log('Device list sent');
 });
 
+app.post('/api/set-filters', (req, res) => {
+  console.log(req.body)
+  const { filters } = req.body;
+
+  if (true) {
+    res.json({ message: ''});
+  } else {
+    res.status(404).json({ message: '' });
+  }
+})
+
 app.post('/api/select-device', (req, res) => {
   console.log(req.body)
   const { deviceName } = req.body;
