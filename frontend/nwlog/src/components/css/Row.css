@@ -1,0 +1,9 @@
+td {
+  border: 1px solid #000;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: #682d2d;
+  transition: background-color 0.2s ease;
+}

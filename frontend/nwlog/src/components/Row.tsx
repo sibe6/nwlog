@@ -1,11 +1,20 @@
-import './Row.css'
+import './css/Row.css'
 import { Packet } from '../constants/Types';
 import protocols from '../constants/Protocols';
+import { toLocaleTime } from '../utils/Helper';
 
-export default function Row( packet : Packet) {
+type RowProps = {
+  packet: Packet;
+  onRowClick: () => void;
+};
+
+export function Row( props : RowProps) {
+  const { packet } = props;
+  const { onRowClick } = props;
+
   return (
-    <tr>
-      <td>{packet.time}</td>
+    <tr onClick={onRowClick} style={{ cursor: 'pointer' }}>
+      <td>{toLocaleTime(packet.time)}</td>
       <td>{packet.src}</td>
       <td>{packet.dst}</td>
       <td>{packet.len}</td>
