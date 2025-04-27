@@ -2,7 +2,9 @@
 
 Tracks packets from selected device
 
-![image](https://github.com/user-attachments/assets/97f9f3e4-73a1-42fb-8ce5-fccb394ed8ce)
+![image](https://github.com/user-attachments/assets/f47f3b1d-6d04-4c31-aba5-8b3799d9e7e4)
+![image](https://github.com/user-attachments/assets/1aa8e329-dcd1-4110-95d4-4596da65e872)
+
 
 ## Requirements
 
